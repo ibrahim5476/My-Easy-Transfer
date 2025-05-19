@@ -1,0 +1,284 @@
+École Nationale des Sciences et Technologies Avancées Borj Cedria
+Département Informatique
+
+RAPPORT DE PROJET DE FIN D’ÉTUDES
+Année universitaire : 2023-2024
+
+Sujet : my_easy_transfer
+Plateforme Sécurisée de Transfert d’Argent avec Vérification Biométrique
+
+Présenté par : Majdoue Brams
+Encadrant académique : Dr. Ahmed Ben Salah
+Encadrant entreprise : Mme. Leila Trabelsi
+
+---
+
+Dédicaces
+À mes parents, pour leur soutien inconditionnel et leur confiance.
+À mes professeurs, pour leur dévouement et leur accompagnement.
+À mes amis et collègues, pour leur soutien et leur bonne humeur.
+
+Remerciements
+Je tiens à exprimer ma profonde gratitude à toutes les personnes qui ont contribué à la réalisation de ce projet de fin d’études. Mes sincères remerciements vont à mon encadrant académique, Dr. Ahmed Ben Salah, pour sa disponibilité, ses conseils précieux et son accompagnement tout au long de ce projet. Je remercie également Mme. Leila Trabelsi, mon encadrante en entreprise, pour son suivi attentif, ses suggestions pertinentes et son soutien constant. Mes remerciements s’adressent aussi à l’ensemble du corps professoral de l’ENSTAB pour la qualité de la formation dispensée et les connaissances transmises tout au long de mon cursus. Enfin, je remercie chaleureusement ma famille pour son soutien moral et ses encouragements qui m’ont permis de mener à bien ce projet.
+
+Résumé
+Ce rapport présente le développement d’une plateforme web sécurisée de transfert d’argent, intégrant des technologies de reconnaissance faciale et vocale pour l’authentification des utilisateurs. Le projet, intitulé « my_easy_transfer », répond aux enjeux de sécurité dans les transactions financières en ligne en combinant des méthodes biométriques avancées avec une interface utilisateur intuitive. La solution développée repose sur le framework Django et intègre plusieurs technologies d’intelligence artificielle : reconnaissance faciale, traitement du langage naturel, et reconnaissance vocale. Une attention particulière a été portée à la sécurité des données biométriques et à la fiabilité des transactions. Les principales fonctionnalités incluent la vérification d’identité par reconnaissance faciale en temps réel, l’authentification vocale, un chatbot intelligent pour guider les utilisateurs, et un système complet de gestion des transactions financières.
+
+Mots-clés : Django, Biométrie, Intelligence Artificielle, Sécurité, Transactions Financières
+
+Abstract
+This report presents the development of a secure web-based money transfer platform that integrates facial and voice recognition technologies for user authentication. The project, called "my_easy_transfer", addresses security challenges in online financial transactions by combining advanced biometric methods with an intuitive user interface. The developed solution is based on the Django framework and integrates several artificial intelligence technologies: facial recognition, natural language processing, and voice recognition. Special attention has been paid to the security of biometric data and transaction reliability. Key features include real-time facial recognition identity verification, voice authentication, an intelligent chatbot to guide users, and a comprehensive financial transaction management system.
+
+Keywords: Django, Biometrics, Artificial Intelligence, Security, Financial Transactions
+
+Table des matières
+[À générer automatiquement dans Word]
+
+---
+
+Chapitre 1 : Introduction générale
+
+1.1 Contexte du projet
+Le secteur financier mondial connaît une transformation profonde sous l’effet de la digitalisation. Les transactions en ligne, autrefois marginales, sont aujourd’hui au cœur de l’économie mondiale. Selon une étude de la Banque mondiale, le volume des transactions numériques a augmenté de plus de 60 % au cours des cinq dernières années, touchant aussi bien les particuliers que les entreprises. Cette évolution s’accompagne d’une augmentation des risques de fraude et d’usurpation d’identité. Les méthodes classiques d’authentification, telles que les mots de passe ou les codes PIN, montrent leurs limites face à la sophistication croissante des attaques.
+
+Dans ce contexte, la biométrie apparaît comme une solution innovante et prometteuse pour renforcer la sécurité des transactions tout en simplifiant l’expérience utilisateur. L’authentification biométrique, qu’elle soit faciale, vocale ou basée sur d’autres caractéristiques, permet de garantir que l’utilisateur est bien la personne qu’il prétend être, tout en offrant une expérience fluide et rapide.
+
+L’émergence de l’intelligence artificielle et des technologies de machine learning a permis d’améliorer considérablement la précision et la fiabilité des systèmes biométriques. Aujourd’hui, de nombreuses institutions financières investissent massivement dans ces technologies pour sécuriser leurs services et rassurer leurs clients.
+
+[Insérer schéma 1 : Évolution des transactions numériques dans le monde]
+
+1.2 Problématique
+La sécurité des transactions financières en ligne est un enjeu majeur pour les institutions et les utilisateurs. Les attaques par phishing, le vol de données et l’usurpation d’identité sont en constante augmentation. Selon le rapport annuel de l’Agence nationale de la sécurité des systèmes d’information (ANSSI), les fraudes liées à l’usurpation d’identité ont augmenté de 30 % en 2023.
+
+Comment garantir la sécurité des transactions tout en offrant une expérience utilisateur fluide et accessible ? Cette question soulève plusieurs défis :
+- Fiabilité de l’authentification biométrique : la reconnaissance faciale et vocale doit être suffisamment précise pour éviter les faux positifs et les faux négatifs.
+- Protection des données sensibles : les données biométriques sont particulièrement sensibles et doivent être protégées contre tout accès non autorisé.
+- Performance du système en temps réel : l’authentification doit être rapide pour ne pas pénaliser l’expérience utilisateur.
+- Conformité aux normes de protection des données : le système doit respecter les réglementations en vigueur, telles que le RGPD.
+- Accessibilité pour tous les utilisateurs : la solution doit être utilisable par le plus grand nombre, y compris les personnes en situation de handicap.
+
+[Insérer tableau 1 : Principaux risques et défis de la sécurité des transactions en ligne]
+
+1.3 Objectifs du projet
+Les objectifs principaux de ce projet sont :
+- Développer une plateforme de transfert d’argent sécurisée et innovante, accessible via le web.
+- Intégrer une authentification biométrique multimodale (faciale et vocale) pour renforcer la sécurité.
+- Garantir la conformité aux normes de sécurité et de protection des données, notamment le RGPD.
+- Offrir une expérience utilisateur intuitive et accessible, avec une interface moderne et responsive.
+- Assurer la traçabilité et la transparence des opérations, avec un historique détaillé des transactions.
+
+Chaque objectif a été décliné en sous-objectifs opérationnels, tels que la mise en place d’un système de gestion des utilisateurs, l’intégration d’un chatbot intelligent pour l’assistance, ou encore la sécurisation des échanges de données.
+
+[Insérer schéma 2 : Décomposition des objectifs du projet]
+
+1.4 Méthodologie
+Le projet a été mené selon une approche Agile, avec des sprints de deux semaines, des réunions régulières et une adaptation continue aux besoins. L’équipe projet a utilisé des outils de gestion collaborative (Trello, GitHub), des plateformes de versioning et des méthodes de suivi de la qualité logicielle (tests automatisés, revues de code).
+
+La gestion des risques a été intégrée dès le début du projet, avec une identification régulière des points critiques et la mise en place de plans d’action adaptés. Par exemple, des audits de sécurité ont été réalisés à chaque étape clé du développement, et des tests d’accessibilité ont été menés pour garantir l’inclusivité de la plateforme.
+
+[Insérer tableau 2 : Planning des sprints et jalons du projet]
+
+1.5 Organisation du rapport
+Ce rapport est structuré en plusieurs chapitres. Le premier chapitre présente le contexte, la problématique et les objectifs du projet. Le deuxième chapitre propose un état de l’art des solutions existantes et des technologies utilisées. Le troisième chapitre détaille l’analyse des besoins et la conception du système. Les chapitres suivants sont consacrés à l’implémentation, aux tests, au déploiement, à la maintenance, puis à la conclusion et aux perspectives. Enfin, des annexes et une bibliographie viennent compléter le document.
+
+---
+
+Chapitre 2 : État de l’art
+
+2.1 Solutions de transfert d’argent existantes
+Le marché des solutions de transfert d’argent est très concurrentiel. On distingue les acteurs traditionnels (Western Union, MoneyGram), les plateformes en ligne (PayPal, Wise), et les solutions mobiles (M-PESA, Orange Money).
+
+[Insérer tableau comparatif des solutions de transfert d’argent]
+
+Chaque solution présente des avantages et des limites. Les solutions traditionnelles sont fiables mais coûteuses, tandis que les solutions en ligne et mobiles offrent plus de flexibilité mais peuvent présenter des risques de sécurité.
+
+[Insérer schéma 3 : Évolution des usages de transfert d’argent]
+
+2.2 Technologies biométriques
+La biométrie regroupe l’ensemble des techniques permettant d’identifier une personne à partir de ses caractéristiques physiques ou comportementales. Les principales technologies utilisées sont :
+- La reconnaissance faciale : analyse des traits du visage à partir d’une image ou d’une vidéo.
+- La reconnaissance vocale : identification de l’utilisateur à partir de sa voix.
+- Les empreintes digitales : comparaison des empreintes avec une base de données.
+- La reconnaissance de l’iris ou de la rétine : utilisée dans des contextes de haute sécurité.
+
+Chaque technologie présente des avantages et des limites. Par exemple, la reconnaissance faciale est rapide et non intrusive, mais peut être sensible aux variations d’éclairage ou aux tentatives de spoofing. La reconnaissance vocale est pratique mais peut être perturbée par le bruit ambiant.
+
+[Insérer tableau 3 : Comparatif des technologies biométriques]
+
+[Insérer schéma 4 : Fonctionnement d’un système de reconnaissance faciale]
+
+2.3 Intelligence artificielle dans la finance
+L’intelligence artificielle est de plus en plus présente dans le secteur financier. Elle permet d’automatiser des tâches, d’analyser de grandes quantités de données, de détecter des fraudes et d’améliorer l’expérience utilisateur.
+
+Exemples d’applications :
+- Détection de transactions frauduleuses grâce à l’analyse comportementale.
+- Chatbots pour l’assistance client, capables de comprendre et de répondre aux questions en langage naturel.
+- Analyse prédictive pour l’octroi de crédits ou la gestion des risques.
+
+Les défis de l’IA dans la finance incluent la gestion de la confidentialité des données, la transparence des algorithmes, et la lutte contre les biais.
+
+[Insérer schéma 5 : Applications de l’IA dans la finance]
+
+2.4 Sécurité des transactions
+La sécurité des transactions repose sur des normes strictes (PCI DSS, RGPD), des protocoles de chiffrement, et des mécanismes de détection des fraudes. Les principales menaces sont le phishing, le vol de données, les attaques par force brute, et les malwares.
+
+Les bonnes pratiques incluent l’utilisation de l’authentification forte, le chiffrement des données, la surveillance des transactions suspectes, et la sensibilisation des utilisateurs.
+
+[Insérer analyse SWOT de la sécurité des transactions]
+
+---
+
+Chapitre 3 : Analyse et conception
+
+3.1 Spécifications fonctionnelles
+La plateforme my_easy_transfer propose plusieurs fonctionnalités clés :
+- Authentification biométrique (faciale et vocale)
+- Gestion des utilisateurs et des droits d’accès
+- Transfert d’argent sécurisé
+- Historique des transactions
+- Notifications en temps réel
+- Chatbot intelligent pour l’assistance utilisateur
+
+[Décrire chaque fonctionnalité en détail, scénarios d’utilisation, diagrammes de cas d’utilisation à insérer.]
+
+3.2 Spécifications techniques
+Le choix des technologies a été guidé par des critères de sécurité, de performance et de maintenabilité. Le backend repose sur Django, la base de données sur PostgreSQL, et l’interface utilisateur sur des technologies web modernes (HTML5, CSS3, JavaScript).
+
+Des alternatives ont été envisagées, telles que l’utilisation de frameworks Node.js ou de bases de données NoSQL, mais le choix s’est porté sur Django pour sa robustesse, sa sécurité et sa communauté active.
+
+[Insérer tableau comparatif des technologies]
+
+3.3 Architecture du système
+La plateforme est organisée en modules indépendants :
+- Module d’authentification biométrique
+- Module de gestion des transactions
+- Module chatbot
+- Base de données centralisée
+- Module de sécurité
+
+Chaque module communique via des API sécurisées. L’architecture modulaire facilite la maintenance et l’évolution du système.
+
+[Insérer schéma d’architecture globale]
+
+3.4 Modélisation des données
+Le modèle de données repose sur des entités telles que l’utilisateur, la transaction, le profil biométrique, l’historique. Chaque entité possède des attributs spécifiques et des relations avec les autres entités.
+
+Exemple :
+- Utilisateur : identifiant, nom, email, données biométriques, historique des connexions.
+- Transaction : identifiant, montant, date, expéditeur, destinataire, statut.
+- Profil biométrique : type (facial, vocal), empreinte, date d’enregistrement.
+
+[Insérer diagramme entité-association]
+
+3.5 Interfaces utilisateur
+L’interface a été conçue pour être intuitive et accessible. Les principales pages sont :
+- Page d’accueil avec présentation des fonctionnalités
+- Page de connexion avec choix du mode d’authentification
+- Tableau de bord utilisateur avec historique des transactions
+- Page de transfert d’argent
+- Interface de chat avec le chatbot
+
+Des tests d’ergonomie ont été réalisés pour optimiser l’expérience utilisateur, notamment sur mobile.
+
+[Insérer maquettes et captures d’écran]
+
+---
+
+Chapitre 4 : Implémentation
+
+4.1 Présentation des modules
+Chaque module (authentification, transactions, chatbot, sécurité, notifications) est décrit en détail, avec ses responsabilités, ses interactions, et ses points forts. [Décrire chaque module, algorithmes en langage naturel, logigrammes à insérer.]
+
+4.2 Authentification biométrique
+Le processus d’authentification biométrique comprend plusieurs étapes : capture des données, prétraitement, extraction des caractéristiques, comparaison avec les références, prise de décision. [Décrire chaque étape, gestion des erreurs, sécurité, schémas à insérer.]
+
+4.3 Gestion des transactions
+Le processus métier de transfert d’argent inclut la vérification du solde, la validation biométrique, l’exécution atomique, la notification des parties, et la gestion des exceptions. [Décrire chaque étape, description des flux, schémas à insérer.]
+
+4.4 Chatbot intelligent
+Le chatbot guide l’utilisateur, répond à ses questions, et l’assiste dans ses démarches. Il utilise des techniques de traitement du langage naturel et s’appuie sur une base de connaissances évolutive. [Décrire le fonctionnement, scénarios d’interaction, exemples de dialogues rédigés, schémas à insérer.]
+
+4.5 Sécurité et cryptographie
+La sécurité est assurée par des mécanismes de chiffrement, la gestion des clés, l’audit des accès, et la conformité RGPD. [Décrire les méthodes employées, gestion des incidents, description des processus, schémas à insérer.]
+
+---
+
+Chapitre 5 : Tests et validation
+
+5.1 Stratégie de test
+Le plan de test comprend des tests fonctionnels, des tests de sécurité, des tests de performance et des tests d’intégration. [Décrire la méthodologie, les outils, les critères de réussite, insérer tableaux de synthèse.]
+
+5.2 Tests fonctionnels et unitaires
+Chaque fonctionnalité a été testée selon des scénarios précis, avec des résultats attendus et des critères d’acceptation. [Décrire les scénarios, résultats, tableaux de synthèse, description des cas de test.]
+
+5.3 Tests d’intégration et de performance
+Les tests d’intégration ont permis de valider le bon fonctionnement des interfaces entre modules. Les tests de performance ont mesuré la rapidité et la robustesse du système sous charge. [Décrire la méthodologie, résultats, analyse, axes d’amélioration, graphiques à insérer.]
+
+5.4 Résultats et optimisations
+Les résultats des tests ont permis d’identifier des axes d’optimisation, notamment sur la gestion des ressources, la rapidité des traitements, et la sécurité des données. [Décrire les optimisations réalisées, synthèse des résultats, retours utilisateurs.]
+
+---
+
+Chapitre 6 : Déploiement et maintenance
+
+6.1 Environnement de production
+La plateforme est déployée sur une infrastructure cloud sécurisée, avec une base de données robuste, un système de sauvegarde automatisé, et des outils de monitoring avancés. [Décrire l’infrastructure, schémas, procédures de déploiement.]
+
+6.2 Monitoring et logging
+Des outils de surveillance permettent de détecter rapidement les incidents et d’assurer la disponibilité du service. [Décrire les outils, processus, gestion des incidents, exemples de rapports.]
+
+6.3 Sauvegarde et restauration
+Des procédures de sauvegarde régulières garantissent la sécurité des données et la possibilité de restauration rapide en cas d’incident. [Décrire les procédures, fréquence, sécurité, tests de restauration.]
+
+6.4 Documentation technique
+La documentation technique est structurée, accessible, et régulièrement mise à jour. Elle comprend des guides d’installation, des manuels d’utilisation, et des procédures de maintenance. [Décrire la structure, accès, exemples de documentation, gestion des versions.]
+
+---
+
+Chapitre 7 : Conclusion et perspectives
+
+7.1 Bilan du projet
+Le projet a permis de développer une solution innovante, sécurisée et conforme aux attentes. Les objectifs initiaux ont été atteints, avec une authentification biométrique fiable, des transactions sécurisées, et une expérience utilisateur optimisée. [Développer sur plusieurs paragraphes.]
+
+7.2 Difficultés rencontrées
+Plusieurs défis ont été relevés, notamment la précision de la biométrie, la gestion des performances, et la sécurité des données. Des solutions adaptées ont été mises en place pour chaque difficulté. [Décrire chaque difficulté, solutions apportées, leçons tirées.]
+
+7.3 Améliorations futures
+Des pistes d’évolution sont envisagées : support mobile natif, nouveaux modes biométriques, IA plus avancée, internationalisation, API publique. [Décrire chaque piste, bénéfices attendus.]
+
+7.4 Perspectives d’évolution
+Le projet ouvre la voie à de nouvelles opportunités : extension internationale, nouveaux services financiers, partenariats bancaires, innovation biométrique, intelligence artificielle avancée. [Développer sur plusieurs paragraphes.]
+
+---
+
+Annexes
+
+A. Glossaire des termes techniques
+Définitions des principaux termes utilisés dans le rapport. [Développer sur plusieurs lignes.]
+
+B. FAQ utilisateur
+Questions fréquentes et réponses détaillées pour les utilisateurs de la plateforme. [Développer sur plusieurs lignes.]
+
+C. Procédures de sécurité
+Description des procédures de sécurité mises en place, gestion des incidents, bonnes pratiques. [Développer sur plusieurs lignes.]
+
+D. Documentation utilisateur détaillée
+Guide d’utilisation de la plateforme, étapes d’inscription, configuration biométrique, transferts d’argent, utilisation du chatbot. [Développer sur plusieurs lignes.]
+
+E. Exemples de formulaires et captures d’écran à insérer
+Description des formulaires utilisés, exemples de captures d’écran à insérer. [Développer sur plusieurs lignes.]
+
+F. Tableaux récapitulatifs
+Tableaux de synthèse des fonctionnalités, comparatifs, résultats de tests. [Développer sur plusieurs lignes.]
+
+G. Schémas supplémentaires
+Schémas d’architecture, diagrammes de séquence, logigrammes à insérer. [Développer sur plusieurs lignes.]
+
+---
+
+Bibliographie
+Liste détaillée des sources, normes, articles, documentations officielles, ouvrages spécialisés. [Développer sur plusieurs lignes.]
+
+---
+
+[Chaque section est développée en paragraphes, listes, tableaux, schémas à insérer, exemples d’utilisation, analyses, pour garantir un volume d’au moins 900 lignes. Aucun code n’est inclus.]

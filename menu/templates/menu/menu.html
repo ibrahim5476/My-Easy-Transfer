@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Easy Transfer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #ffffff;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        
+        .main-container {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            min-height: 90vh;
+        }
+        
+        .content {
+            width: 50%;
+            padding-right: 40px;
+        }
+        
+        .heading {
+            font-size: 3.2rem;
+            color: #1e3a8a;
+            line-height: 1.2;
+            margin-bottom: 30px;
+            font-weight: 700;
+        }
+        
+        .service-cards {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .service-card {
+            padding: 20px;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .clickable-card {
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        .clickable-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+        
+        .blue-icon {
+            background-color: #5368df;
+            color: white;
+        }
+        
+        .orange-icon {
+            background-color: #ffa502;
+            color: white;
+        }
+        
+        .green-icon {
+            background-color: #20bf6b;
+            color: white;
+        }
+        
+        .red-icon {
+            background-color: #eb4d4b;
+            color: white;
+        }
+        
+        .service-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #1e3a8a;
+        }
+        
+        .service-description {
+            color: #555;
+            line-height: 1.5;
+        }
+        
+        .soon-badge {
+            background-color: #eb4d4b;
+            color: white;
+            font-size: 12px;
+            padding: 4px 12px;
+            border-radius: 20px;
+            display: inline-block;
+            margin-top: 10px;
+        }
+        
+        .phone-mockup {
+            width: 40%;
+            position: relative;
+        }
+        
+        .phone-mockup img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        @media (max-width: 768px) {
+            .main-container {
+                flex-direction: column;
+                padding: 20px 15px;
+            }
+            
+            .content {
+                width: 100%;
+                padding-right: 0;
+                margin-bottom: 40px;
+            }
+            
+            .heading {
+                font-size: 2rem;
+            }
+            
+            .phone-mockup {
+                width: 80%;
+                margin: 0 auto;
+            }
+            
+            .service-cards {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* Menu styles */
+        .menu-container {
+            width: 100%;
+            background-color: white;
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .logo {
+            text-decoration: none;
+            color: #1e3a8a;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        
+        .menu-button {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        @media (max-width: 768px) {
+            .menu-button {
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+    {% block content %}
+    <!-- Navigation Menu - simplified -->
+    <div class="menu-container">
+        <a href="#" class="logo">My Easy Transfer</a>
+        <button class="menu-button">☰</button>
+    </div>
+    
+    <!-- Main Content -->
+    <div class="main-container">
+        <div class="content">
+            <h1 class="heading">Envoyez de l'argent en quelques clics avec My Easy Transfer.</h1>
+            
+            <div class="service-cards">
+                <a href="{% url 'menu:handle_transfer' %}" class="service-card clickable-card">
+                    <div class="service-icon blue-icon">↗️</div>
+                    <h2 class="service-title">Transfert d'argent</h2>
+                    <p class="service-description">Envoyez de l'argent avec My Easy Transfer en toute facilité et à frais réduits. Des transferts rapides, simples et fiables</p>
+                </a>
+                
+                <a href="{% url 'menu:handle_recharge' %}" class="service-card clickable-card">
+                    <div class="service-icon orange-icon">📱</div>
+                    <h2 class="service-title">Recharge mobile</h2>
+                    <p class="service-description">Rechargez instantanément et restez toujours connecté avec vos proches. Avec My Easy Transfer, bénéficiez d'une recharge mobile rapide et sécurisée pour vous et vos proches.</p>
+                </a>
+                
+                <div class="service-card">
+                    <div class="service-icon green-icon">👛</div>
+                    <h2 class="service-title">Transfert vers wallet</h2>
+                    <p class="service-description">Profitez d'une solution de transfert d'argent rapide et fiable vers le Wallet de votre destinataire. Envoyez des fonds en ligne 24h/24 et 7j/7</p>
+                    <span class="soon-badge">Bientôt</span>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon red-icon">📄</div>
+                    <h2 class="service-title">Paiement de factures</h2>
+                    <p class="service-description">Économisez du temps, payez vos factures facilement avec My Easy Transfer.</p>
+                    <span class="soon-badge">Bientôt</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="phone-mockup">
+            <img src="/static/images/telephone_application.png" alt="My Easy Transfer App" />
+        </div>
+    </div>
+    {% endblock %}
+</body>
+</html>

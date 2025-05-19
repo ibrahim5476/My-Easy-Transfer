@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Easy Transfer - Accueil</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #ffffff;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        
+        .menu-container {
+            width: 100%;
+            background-color: white;
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .logo {
+            text-decoration: none;
+            color: #1e3a8a;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        
+        .menu-button {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        .auth-container {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            min-height: 80vh;
+        }
+        
+        .welcome-content {
+            width: 50%;
+            padding-right: 40px;
+        }
+        
+        .auth-form-container {
+            width: 40%;
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+        }
+        
+        .heading {
+            font-size: 3.2rem;
+            color: #1e3a8a;
+            line-height: 1.2;
+            margin-bottom: 30px;
+            font-weight: 700;
+        }
+        
+        .subheading {
+            font-size: 1.2rem;
+            color: #555;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+        
+        .features {
+            margin-top: 40px;
+        }
+        
+        .feature-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .feature-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #5368df;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            font-size: 18px;
+        }
+        
+        .feature-text {
+            font-size: 1rem;
+            color: #555;
+        }
+        
+        .auth-form {
+            width: 100%;
+        }
+        
+        .form-heading {
+            font-size: 1.8rem;
+            color: #1e3a8a;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .form-field {
+            margin-bottom: 20px;
+            width: 100%;
+        }
+        
+        .form-field label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+            color: #555;
+        }
+        
+        .form-field input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+        
+        .form-field input:focus {
+            border-color: #5368df;
+            outline: none;
+        }
+        
+        .submit-button {
+            background-color: #1e3a8a;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 12px 25px;
+            font-size: 1rem;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.3s;
+        }
+        
+        .submit-button:hover {
+            background-color: #1c3377;
+        }
+        
+        .auth-links {
+            margin-top: 20px;
+            text-align: center;
+        }
+        
+        .auth-links a {
+            color: #5368df;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .auth-links a:hover {
+            text-decoration: underline;
+        }
+        
+        @media (max-width: 768px) {
+            .auth-container {
+                flex-direction: column;
+                padding: 20px 15px;
+            }
+            
+            .welcome-content {
+                width: 100%;
+                padding-right: 0;
+                margin-bottom: 40px;
+            }
+            
+            .auth-form-container {
+                width: 100%;
+            }
+            
+            .heading {
+                font-size: 2rem;
+            }
+            
+            .menu-button {
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Menu -->
+    <div class="menu-container">
+        <a href="#" class="logo">My Easy Transfer</a>
+        <button class="menu-button">☰</button>
+    </div>
+    
+    <!-- Main Content -->
+    <div class="auth-container">
+        <div class="welcome-content">
+            <h1 class="heading">Transferts d'argent simples et sécurisés</h1>
+            <p class="subheading">My Easy Transfer vous offre une solution rapide, fiable et économique pour envoyer de l'argent partout dans le monde.</p>
+            
+            <div class="features">
+                <div class="feature-item">
+                    <div class="feature-icon">↗️</div>
+                    <p class="feature-text">Transferts internationaux à frais réduits</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">🔒</div>
+                    <p class="feature-text">Transactions 100% sécurisées</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">⚡</div>
+                    <p class="feature-text">Envois et réceptions instantanés</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">📱</div>
+                    <p class="feature-text">Recharges mobiles internationales</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="auth-form-container">
+            <h2 class="form-heading">Connexion</h2>
+            <form method="post" class="auth-form">
+                {% csrf_token %}
+                
+                <div class="form-field">
+                    <label for="{{ form.username.id_for_label }}">Nom d'utilisateur</label>
+                    {{ form.username }}
+                </div>
+                
+                <div class="form-field">
+                    <label for="{{ form.password.id_for_label }}">Mot de passe</label>
+                    {{ form.password }}
+                </div>
+                
+                <button type="submit" class="submit-button">Se connecter</button>
+            </form>
+            
+            <div class="auth-links">
+                <p>Pas encore inscrit ? <a href="{% url 'signup' %}">Créer un compte</a></p>
+                <p style="margin-top: 10px;"><a href="#">Mot de passe oublié ?</a></p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

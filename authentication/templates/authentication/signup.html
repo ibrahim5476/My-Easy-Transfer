@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Easy Transfer - Inscription</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #ffffff;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        
+        .menu-container {
+            width: 100%;
+            background-color: white;
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .logo {
+            text-decoration: none;
+            color: #1e3a8a;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        
+        .menu-button {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        .signup-container {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            min-height: 80vh;
+        }
+        
+        .welcome-content {
+            width: 45%;
+            padding-right: 40px;
+        }
+        
+        .signup-form-container {
+            width: 50%;
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+        }
+        
+        .heading {
+            font-size: 3rem;
+            color: #1e3a8a;
+            line-height: 1.2;
+            margin-bottom: 30px;
+            font-weight: 700;
+        }
+        
+        .subheading {
+            font-size: 1.2rem;
+            color: #555;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+        
+        .benefits {
+            margin-top: 40px;
+        }
+        
+        .benefit-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+        
+        .benefit-icon {
+            width: 40px;
+            height: 40px;
+            min-width: 40px;
+            border-radius: 50%;
+            background-color: #5368df;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            font-size: 18px;
+        }
+        
+        .benefit-text {
+            font-size: 1rem;
+            color: #555;
+        }
+        
+        .benefit-title {
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: #333;
+        }
+        
+        .signup-form {
+            width: 100%;
+        }
+        
+        .form-heading {
+            font-size: 1.8rem;
+            color: #1e3a8a;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .error-message {
+            background-color: #ffecec;
+            color: #e74c3c;
+            padding: 12px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            border-left: 4px solid #e74c3c;
+        }
+        
+        .form-field {
+            margin-bottom: 20px;
+            width: 100%;
+        }
+        
+        .form-field label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+            color: #555;
+            font-weight: 500;
+        }
+        
+        .form-field input,
+        .form-field select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+        
+        .form-field input:focus,
+        .form-field select:focus {
+            border-color: #5368df;
+            outline: none;
+        }
+        
+        .form-field .help-text {
+            font-size: 0.8rem;
+            color: #777;
+            margin-top: 5px;
+        }
+        
+        .form-field .errorlist {
+            list-style-type: none;
+            color: #e74c3c;
+            font-size: 0.8rem;
+            margin-top: 5px;
+        }
+        
+        .submit-button {
+            background-color: #1e3a8a;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 12px 25px;
+            font-size: 1rem;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.3s;
+            margin-top: 10px;
+        }
+        
+        .submit-button:hover {
+            background-color: #1c3377;
+        }
+        
+        .auth-links {
+            margin-top: 20px;
+            text-align: center;
+        }
+        
+        .auth-links a {
+            color: #5368df;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .auth-links a:hover {
+            text-decoration: underline;
+        }
+        
+        .form-row {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .form-col {
+            flex: 1;
+        }
+        
+        @media (max-width: 768px) {
+            .signup-container {
+                flex-direction: column;
+                padding: 20px 15px;
+            }
+            
+            .welcome-content {
+                width: 100%;
+                padding-right: 0;
+                margin-bottom: 40px;
+            }
+            
+            .signup-form-container {
+                width: 100%;
+            }
+            
+            .heading {
+                font-size: 2rem;
+            }
+            
+            .menu-button {
+                display: block;
+            }
+            
+            .form-row {
+                flex-direction: column;
+                gap: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Menu -->
+    <div class="menu-container">
+        <a href="#" class="logo">My Easy Transfer</a>
+        <button class="menu-button">☰</button>
+    </div>
+    
+    <!-- Main Content -->
+    <div class="signup-container">
+        <div class="welcome-content">
+            <h1 class="heading">Rejoignez My Easy Transfer</h1>
+            <p class="subheading">Créez votre compte en quelques étapes simples et commencez à profiter de tous nos services de transfert d'argent.</p>
+            
+            <div class="benefits">
+                <div class="benefit-item">
+                    <div class="benefit-icon">🔐</div>
+                    <div>
+                        <h3 class="benefit-title">Compte sécurisé</h3>
+                        <p class="benefit-text">Votre compte est protégé par les dernières technologies de sécurité.</p>
+                    </div>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">💸</div>
+                    <div>
+                        <h3 class="benefit-title">Frais réduits</h3>
+                        <p class="benefit-text">Bénéficiez de tarifs avantageux sur tous vos transferts d'argent.</p>
+                    </div>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">🌐</div>
+                    <div>
+                        <h3 class="benefit-title">Transferts mondiaux</h3>
+                        <p class="benefit-text">Envoyez de l'argent partout dans le monde en quelques clics.</p>
+                    </div>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">📱</div>
+                    <div>
+                        <h3 class="benefit-title">Application mobile</h3>
+                        <p class="benefit-text">Gérez vos transferts depuis votre smartphone à tout moment.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="signup-form-container">
+            <h2 class="form-heading">Créer un compte</h2>
+            
+            {% if error %}
+                <div class="error-message">
+                    {{ error }}
+                </div>
+            {% endif %}
+            
+            <form method="post" enctype="multipart/form-data" class="signup-form">
+                {% csrf_token %}
+                
+                <div class="form-row">
+                    <div class="form-col">
+                        <div class="form-field">
+                            <label for="{{ form.first_name.id_for_label }}">Prénom</label>
+                            {{ form.first_name }}
+                            {% if form.first_name.help_text %}
+                                <p class="help-text">{{ form.first_name.help_text }}</p>
+                            {% endif %}
+                            {% if form.first_name.errors %}
+                                <ul class="errorlist">
+                                    {% for error in form.first_name.errors %}
+                                        <li>{{ error }}</li>
+                                    {% endfor %}
+                                </ul>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="form-col">
+                        <div class="form-field">
+                            <label for="{{ form.last_name.id_for_label }}">Nom</label>
+                            {{ form.last_name }}
+                            {% if form.last_name.help_text %}
+                                <p class="help-text">{{ form.last_name.help_text }}</p>
+                            {% endif %}
+                            {% if form.last_name.errors %}
+                                <ul class="errorlist">
+                                    {% for error in form.last_name.errors %}
+                                        <li>{{ error }}</li>
+                                    {% endfor %}
+                                </ul>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-field">
+                    <label for="{{ form.email.id_for_label }}">Adresse email</label>
+                    {{ form.email }}
+                    {% if form.email.help_text %}
+                        <p class="help-text">{{ form.email.help_text }}</p>
+                    {% endif %}
+                    {% if form.email.errors %}
+                        <ul class="errorlist">
+                            {% for error in form.email.errors %}
+                                <li>{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </div>
+                
+                <div class="form-field">
+                    <label for="{{ form.username.id_for_label }}">Nom d'utilisateur</label>
+                    {{ form.username }}
+                    {% if form.username.help_text %}
+                        <p class="help-text">{{ form.username.help_text }}</p>
+                    {% endif %}
+                    {% if form.username.errors %}
+                        <ul class="errorlist">
+                            {% for error in form.username.errors %}
+                                <li>{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-col">
+                        <div class="form-field">
+                            <label for="{{ form.password1.id_for_label }}">Mot de passe</label>
+                            {{ form.password1 }}
+                            {% if form.password1.help_text %}
+                                <p class="help-text">{{ form.password1.help_text }}</p>
+                            {% endif %}
+                            {% if form.password1.errors %}
+                                <ul class="errorlist">
+                                    {% for error in form.password1.errors %}
+                                        <li>{{ error }}</li>
+                                    {% endfor %}
+                                </ul>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="form-col">
+                        <div class="form-field">
+                            <label for="{{ form.password2.id_for_label }}">Confirmer le mot de passe</label>
+                            {{ form.password2 }}
+                            {% if form.password2.help_text %}
+                                <p class="help-text">{{ form.password2.help_text }}</p>
+                            {% endif %}
+                            {% if form.password2.errors %}
+                                <ul class="errorlist">
+                                    {% for error in form.password2.errors %}
+                                        <li>{{ error }}</li>
+                                    {% endfor %}
+                                </ul>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-field">
+                    <label for="{{ form.profile_picture.id_for_label }}">Photo de profil</label>
+                    {{ form.profile_picture }}
+                    {% if form.profile_picture.help_text %}
+                        <p class="help-text">{{ form.profile_picture.help_text }}</p>
+                    {% endif %}
+                    {% if form.profile_picture.errors %}
+                        <ul class="errorlist">
+                            {% for error in form.profile_picture.errors %}
+                                <li>{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </div>
+                
+                <!-- Ajouter d'autres champs de formulaire ici si nécessaire -->
+                
+                <button type="submit" class="submit-button">Créer mon compte</button>
+            </form>
+            
+            <div class="auth-links">
+                <p>Déjà inscrit ? <a href="{% url 'home' %}">Se connecter</a></p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

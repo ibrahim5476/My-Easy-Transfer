@@ -1,23 +1,16 @@
-# Start your image with a node base image
-FROM node:22-alpine
+FROM python:3.10
 
-# The /app directory should act as the main application directory
+# Set working directory
 WORKDIR /app
 
-# Copy the app package and package-lock.json file
-COPY package*.json ./
+# Copy requirements
+COPY requirements.txt .
 
-# Copy local directories to the current local directory of our docker image (/app)
-COPY ./src ./src
-COPY ./public ./public
+# Install dependencies
+RUN pip install --no-cache-dir -r requirements.txt
 
-# Install node packages, install serve, build the app, and remove dependencies at the end
-RUN npm install \
-    && npm install -g serve@latest \
-    && npm run build \
-    && rm -fr node_modules
+# Copy the rest of the project
+COPY . .
 
-EXPOSE 3000
-
-# Start the app using serve command
-CMD [ "serve", "-s", "build" ]
+# Command to run the app
+CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
